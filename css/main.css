@@ -302,5 +302,7 @@ input[type="checkbox"] {
   margin: 5px;
 }
 .cardCloseBtn:hover {
-  box-shadow: 0 0 2px 2px rgb(149, 139, 233);
+  color: #f2f2f2;
+  box-shadow: 0 0 1px 1px rgb(149, 139, 233);
+  background-color: rgb(252, 156, 156);
 }

@@ -1,4 +1,62 @@
 // scanVaccineByPin returns bool if it found vaccine
+function setupNavBar() {
+  let navbarElem = document.createElement("nav");
+  navbarElem.setAttribute("class", "noselect");
+  navbarElem.innerHTML = `      <div class="logo">My Dashboard</div>
+  <input type="checkbox" id="click" />
+  <label for="click" class="menu-btn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <ul>
+    <li><a class="active" href="#">Home</a></li>
+    <li><a href="#">Donate</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li><a href="#">Feedback</a></li></ul>`;
+  document.body.appendChild(navbarElem);
+}
+function setupController() {
+  let controllerDiv = document.createElement("div");
+  controllerDiv.setAttribute("class", "noselect");
+  controllerDiv.setAttribute("id", "newBtnArea");
+  controllerDiv.innerHTML = `<span class="labelForNewBtn"
+  >Hey User, Click Here to create new card.</span
+>
+<div class="select-style" style="width: 200px">
+  <select class="inside-saga" id="userCardOption">
+    <option value="none">Select Your New card</option>
+    <option value="cowinTracker">Cowin Tracker</option>
+    <option value="stockTracker">Stock Price Tracker</option>
+    <option value="notes">Notes</option>
+    <option value="calendar">Calendar</option>
+    <option value="spotify">Spotify Controller</option>
+  </select>
+</div>
+<button class="newBtn" id="newCardBtn">+ Create New Card</button>`;
+  document.body.appendChild(controllerDiv);
+}
+
+function setupHeading() {
+  let heading = document.createElement("div");
+  heading.setAttribute("class", "heading noselect");
+  heading.innerHTML = `Your Personal Dashboard`;
+  document.body.appendChild(heading);
+}
+function setupMainarea() {
+  let mainArea = document.createElement("div");
+  mainArea.setAttribute("class", "playground noselect");
+  mainArea.setAttribute("id", "mainArea");
+  mainArea.innerHTML = `<div class="cardLayout">
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro minima
+  perspiciatis ipsa deserunt ea, ullam eius, provident nihil ratione unde
+  doloremque neque explicabo vel fuga pariatur iste in aut recusandae?
+</div>`;
+  document.body.appendChild(mainArea);
+}
+setupNavBar();
+setupController();
+setupHeading();
+setupMainarea();
 
 function scanVaccineByPin(pincode, date) {
   //date = dd-mm-yyyy
@@ -52,7 +110,7 @@ function closeNoteCard(id, i) {
       // console.log(hulu);
     } else {
       if (hulu == `${i}`) {
-        reD.notes.splice(bosdai, bosdai);
+        reD.notes.splice(bosdai, 1);
         localStorage.setItem("notesSerial", JSON.stringify(reD));
       }
       // let content = reD.notes[bosdai].content;
@@ -108,14 +166,16 @@ function retriveNotes() {
       let yalgar = reD.notes[bosdai];
       let hulu = yalgar.id;
       if (hulu == "null") {
-        console.log(hulu);
+        // console.log(hulu);
       } else {
         let content = reD.notes[bosdai].content;
-        let elem = document.createElement("div");
-        elem.setAttribute("class", "cardLayout");
-        elem.setAttribute(`id`, `card${hulu}`); // new
-        document.querySelector("div.playground").appendChild(elem);
-        setupNotesCardTextArea(hulu, true, content);
+        if (content !== "") {
+          let elem = document.createElement("div");
+          elem.setAttribute("class", "cardLayout");
+          elem.setAttribute(`id`, `card${hulu}`); // new
+          document.querySelector("div.playground").appendChild(elem);
+          setupNotesCardTextArea(hulu, true, content);
+        }
       }
     }
   }
@@ -204,6 +264,7 @@ function createNewCard() {
 }
 
 // -------------------load up schedule start-----------------------
+
 if (localStorage.getItem("notesSerial") === null) {
   let obj432 = {
     notes: [
