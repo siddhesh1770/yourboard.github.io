@@ -203,6 +203,25 @@ function createNewCard() {
   localStorage.setItem("cardSerial", i); //new
 }
 
+function buildNavBar() {
+  let navBar = document.createElement("nav");
+  navBar.setAttribute("class", "noselect");
+  navBar.setAttribute("id", "navBar");
+  navBar.innerHTML = `<div class="logo">My Dashboard</div>
+  <input type="checkbox" id="click" />
+  <label for="click" class="menu-btn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <ul>
+    <li onclick=""><a class="active" href="#">Home</a></li>
+    <li onclick="setupDonatePage()"><a href="#">Donate</a></li>
+    <li onclick="setupAboutPage()"><a href="#">About</a></li>
+    <li onclick="setupContactUsPage()"><a href="#">Contact Us</a></li>
+    <li onclick="setupFeedbackPage()"><a href="#">Feedback</a></li>
+  </ul>`;
+  document.body.appendChild(navBar);
+}
+
 // -------------------load up schedule start-----------------------
 if (localStorage.getItem("notesSerial") === null) {
   let obj432 = {
