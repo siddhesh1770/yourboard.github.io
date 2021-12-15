@@ -20,14 +20,12 @@ function scanVaccineByPin(pincode, date) {
     }
   };
 }
-
 function setupCalendarCard(isNewCard) {
   console.log("Calendar Card Was Created");
   if (isNewCard) {
     //Registry for
   }
 }
-
 function startCowinTracker(i) {
   let p = document.getElementById(`pincode${i}`);
   let d = document.getElementById(`cowinDate${i}`); //yyyy-mm-dd
@@ -52,7 +50,7 @@ function closeNoteCard(id, i) {
       // console.log(hulu);
     } else {
       if (hulu == `${i}`) {
-        reD.notes.splice(bosdai, bosdai);
+        reD.notes.splice(bosdai, 1);
         localStorage.setItem("notesSerial", JSON.stringify(reD));
       }
       // let content = reD.notes[bosdai].content;
@@ -94,12 +92,6 @@ function setupCowinCard(i) {
   // newScript.innerHTML = `console.log(${i} I am here Do not worry)`
   // document.getElementsByTagName('body').appendChild(newScript);
 }
-
-// let haoe = {hell: 'hihih', hello:'siddhesh'};
-// for (let hellloop in haoe){
-//   console.log(`${hellloop}, ${haoe[hellloop]}`);
-// }
-
 function retriveNotes() {
   if (localStorage.getItem("notesSerial") != null) {
     let reD = JSON.parse(localStorage.getItem("notesSerial"));
@@ -120,15 +112,6 @@ function retriveNotes() {
     }
   }
 }
-
-// {
-//   let obj = {notes:[{"name": "Collection of Notes"}, {"name": "sid"}, {"name":"world"}]};
-//   for (let i = 0; i < obj.notes.length; i++){
-//       let see = obj.notes[i];
-//       console.log(see.name)
-//   }
-// }
-
 function setupNotesCardTextArea(i, isRetrive, content) {
   {
     // console.log(`I created New Notes Card ${i}`);
@@ -202,10 +185,9 @@ function createNewCard() {
   i = i + 1;
   localStorage.setItem("cardSerial", i); //new
 }
-
 function buildNavBar() {
   let navBar = document.createElement("nav");
-  navBar.setAttribute("class", "noselect");
+  navBar.setAttribute("class", "noselect navBarHello");
   navBar.setAttribute("id", "navBar");
   navBar.innerHTML = `<div class="logo">My Dashboard</div>
   <input type="checkbox" id="click" />
@@ -219,9 +201,47 @@ function buildNavBar() {
     <li onclick="setupContactUsPage()"><a href="#">Contact Us</a></li>
     <li onclick="setupFeedbackPage()"><a href="#">Feedback</a></li>
   </ul>`;
-  document.body.appendChild(navBar);
+  let script = document.getElementById("hello");
+  document.body.insertBefore(navBar, script);
 }
-
+function buildHomeControlBar() {
+  let homeControlBar = document.createElement("div");
+  homeControlBar.setAttribute("class", "noselect");
+  homeControlBar.setAttribute("id", "newBtnArea");
+  homeControlBar.innerHTML = `<span class="labelForNewBtn"
+  >Hey User, Click Here to create new card.</span
+>
+<div class="select-style" style="width: 200px">
+  <select class="inside-saga" id="userCardOption">
+    <option value="none">Select Your New card</option>
+    <option value="cowinTracker">Cowin Tracker</option>
+    <option value="stockTracker">Stock Price Tracker</option>
+    <option value="notes">Notes</option>
+    <option value="calendar">Calendar</option>
+    <option value="spotify">Spotify Controller</option>
+  </select>
+</div>
+<button class="newBtn" id="newCardBtn1">+ Create New Card</button>`;
+  let script = document.getElementById("hello");
+  document.body.insertBefore(homeControlBar, script);
+}
+function buildHeadingBar(message) {
+  let headingBar = document.createElement("div");
+  headingBar.setAttribute("noselect heading");
+  headingBar.innerHTML = `${message}`;
+  let script = document.getElementById("hello");
+  document.insertBefore(headingBar, script);
+}
+function buildHomeMainArea() {
+  let mainArea = document.createElement("div");
+  let script = document.getElementById("hello");
+  mainArea.setAttribute("class", "playground noselect");
+  mainArea.setAttribute("id", "mainArea");
+  document.insertBefore(mainArea, script);
+}
+function buildFooter() {
+  // Pending
+}
 // -------------------load up schedule start-----------------------
 if (localStorage.getItem("notesSerial") === null) {
   let obj432 = {

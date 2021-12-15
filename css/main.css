@@ -307,3 +307,21 @@ input[type="checkbox"] {
   box-shadow: 0 0 2px 2px rgb(149, 139, 233);
   background-color: rgb(250, 143, 165);
 }
+.navBarHello {
+  /* position: fixed; */
+  /* bottom: 0; */
+}
+#mainFooter {
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(150, 208, 231);
+  width: 100%;
+  height: 40px;
+  text-align: justify;
+  /* align-items: center; */
+  padding: 5px 10px 5px 10px;
+}
+
+.mainFooterItems {
+  margin: 0px 0px 0px 150px;
+}
